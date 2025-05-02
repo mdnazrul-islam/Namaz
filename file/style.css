@@ -1,0 +1,386 @@
+
+        /* --- CSS Variables for Easier Theming --- */
+        :root {
+            --primary-color: #00796b; /* Teal */
+            --secondary-color: #004d40; /* Darker Teal */
+            --accent-color: #ffc107; /* Amber */
+            --light-bg: #e0f2f1; /* Light Teal background */
+            --dark-text: #263238; /* Dark Grey */
+            --light-text: #ffffff;
+            --border-color: #b2dfdb; /* Lighter Teal Border */
+            --shadow-color: rgba(0, 77, 64, 0.2);
+            --hover-bg: #00695c; /* Slightly darker primary */
+            --highlight-bg: #a7ffeb; /* Light Green highlight */
+            --table-header-bg: #4db6ac; /* Medium Teal for table header */
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            
+            background: linear-gradient(135deg, var(--light-bg), #ffffff); /* Light gradient background */
+            color: var(--dark-text);
+            line-height: 1.6;
+            padding: 15px 5px; /* Add some padding around the container */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align container to top */
+            min-height: 100vh;
+        }
+        .container {
+            background-color: var(--light-text);
+            padding: 20px 25px; /* Increased padding */
+            border-radius: 15px; /* Softer corners */
+            box-shadow: 0 10px 30px var(--shadow-color);
+            width: 95%;
+            max-width: 800px; /* Limit max width for larger screens */
+            text-align: center;
+            animation: fadeIn 0.8s ease-out; /* Fade in animation */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Time, Greeting, Image Section --- */
+        #time {
+            font-size: 3em; /* Slightly larger */
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 5px; /* Reduced margin */
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        #greeting {
+            font-size: 1.9em;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        #image {
+            width: 90%;
+            max-width: 350px; /* Slightly smaller max-width */
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+            transition: transform 0.4s ease, opacity 0.7s ease-in-out;
+            margin: 15px auto 20px auto; /* Adjusted margin */
+            display: block;
+            border: 3px solid var(--light-text); /* Optional white border */
+            outline: 1px solid var(--border-color); /* Subtle outline */
+        }
+        #image:hover {
+            transform: scale(1.03); /* Slight zoom on hover */
+        }
+
+        /* --- Header Section --- */
+        .header {
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+        .header h1 {
+            font-size: 1.8em; /* Increased size */
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px; /* Space below title */
+            font-weight: 600;
+        }
+        .header h1 img {
+            width: 30px; /* Slightly larger icon */
+            height: 30px;
+            margin-right: 12px;
+            filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.1)); /* Subtle shadow on icon */
+        }
+        .location-select select {
+            padding: 10px 15px; /* More padding */
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--light-text);
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 1em;
+            cursor: pointer;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            appearance: none; /* Remove default arrow */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2300796B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow */
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 10px 10px;
+            padding-right: 35px; /* Space for the arrow */
+        }
+        .location-select select:hover {
+            border-color: var(--primary-color);
+        }
+        .location-select select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px var(--shadow-color);
+        }
+
+        /* --- Countdown Timer --- */
+        .countdown {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); /* Gradient background */
+            color: var(--light-text);
+            padding: 15px 20px; /* Increased padding */
+            border-radius: 10px;
+            font-size: 1.1em; /* Slightly larger */
+            text-align: center;
+            margin-bottom: 30px; /* More space below */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        .countdown span { /* Style for prayer name and time parts */
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+            color: var(--light-text);
+            padding: 4px 8px; /* Adjusted padding */
+            border-radius: 6px;
+            margin: 0 3px;
+            display: inline-block; /* Ensure spans behave well */
+            /* No large background for time numbers, just highlight the numbers themselves */
+        }
+        .countdown br {
+            display: none; /* Hide default br, control spacing with margin/padding */
+        }
+        /* Specific styling for the time numbers */
+        .countdown span.time-num {
+           /* Use default span style from above */
+            min-width: 35px; /* Ensure consistent width */
+            text-align: center;
+        }
+         /* Style for text like "ঘন্টা", "মিনিট", "সেকেন্ড" */
+        .countdown span.time-unit {
+            background: none;
+            padding: 0 5px 0 2px;
+            font-weight: normal;
+            color: rgba(255, 255, 255, 0.85); /* Slightly faded text */
+        }
+         .countdown .next-prayer-name {
+             font-weight: 700;
+             color: var(--accent-color); /* Highlight next prayer name */
+             font-size: 1.1em;
+         }
+         .countdown .countdown-label {
+             display: block;
+             margin-bottom: 10px; /* Space before the time */
+             font-size: 0.95em;
+             color: rgba(255, 255, 255, 0.9);
+         }
+
+
+        /* --- Today's Times Grid --- */
+        .today-times {
+          display: flex;
+          flex-wrap: wrap;
+          max-width: 300px;
+             /* Adjust minmax */
+            gap: 10px; /* Increased gap */
+            margin-bottom: 30px; /* More space below */
+            text-align: center;
+        }
+        .time-box {
+          text-align: center;
+          flex: 1 0 30%;
+            background-color: #f8f9fa; /* Light grey background */
+            padding: 8px 5px; /* Increased padding */
+            border-radius: 10px; /* Softer corners */
+            font-size: 0.9em; /* Adjusted font size */
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .time-box:hover {
+            transform: translateY(-5px); /* Lift effect */
+            box-shadow: 0 6px 15px var(--shadow-color); /* Enhanced shadow on hover */
+            border-color: var(--primary-color);
+        }
+        .time-box .label {
+            font-weight: 600; /* Bolder label */
+            display: block;
+            margin-bottom: 8px; /* More space below label */
+            color: var(--primary-color); /* Use primary color for label */
+            font-size: 0.95em;
+        }
+        .time-box .time {
+            font-size: 1.15em; /* Larger time */
+            font-weight: 700; /* Bolder time */
+            color: var(--secondary-color); /* Darker color for time */
+        }
+
+        /* --- Date Info --- */
+        .date-info {
+            display: flex;
+            justify-content: center; /* Center the date */
+            background-color: var(--light-bg); /* Match light background */
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 3px; /* More space below */
+            font-size: 1.05em;
+            color: var(--secondary-color);
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        /* --- Monthly Table --- */
+        .table-container {
+            margin-top: 30px; /* More space above table */
+            max-width: 100%;
+            overflow-x: auto; /* Ensure horizontal scroll on small screens */
+            border: 1px solid var(--border-color); /* Add border around the container */
+            border-radius: 10px; /* Rounded corners for the container */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Subtle shadow */
+            background-color: var(--light-text); /* White background for table area */
+        }
+        .table-container h2 {
+            text-align: center;
+            font-size: 1.5em; /* Larger heading */
+            margin-bottom: 20px; /* More space below heading */
+            color: var(--secondary-color);
+            font-weight: 600;
+            padding-top: 15px; /* Padding inside container */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px 8px; /* Increased padding */
+            text-align: center;
+            transition: background-color 0.3s ease; /* Smooth background transition */
+        }
+        th {
+            background-color: var(--table-header-bg); /* Use variable */
+            color: var(--light-text); /* White text on header */
+            font-weight: 600; /* Bolder header text */
+            font-size: 0.95em;
+            position: sticky; /* Make header sticky if table scrolls vertically (if container has height limit) */
+            top: 0;
+            z-index: 1;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f7fafa; /* Very light alternating color */
+        }
+        tbody tr:hover {
+            background-color: var(--light-bg); /* Use light teal for hover */
+            cursor: default; /* Indicate rows aren't clickable */
+        }
+        tbody tr.highlight {
+            background-color: var(--highlight-bg); /* Use variable */
+            font-weight: bold;
+            color: var(--secondary-color);
+            border-left: 4px solid var(--primary-color); /* Add a visual indicator */
+            border-right: 4px solid var(--primary-color);
+        }
+        tbody tr.highlight td:first-child {
+             border-left: none; /* Remove double border */
+        }
+         tbody tr.highlight td:last-child {
+             border-right: none; /* Remove double border */
+        }
+
+        /* --- Loader --- */
+        .loader {
+            text-align: center;
+            padding: 40px 20px; /* More padding */
+            font-size: 1.1em; /* Slightly larger */
+            color: var(--primary-color); /* Use primary color */
+            font-style: italic;
+            min-height: 100px; /* Ensure loader takes some space */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Bengali Numerals */
+        .bn-num {
+            /* Font already set globally */
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+             #time {
+                font-size: 2.5em;
+             }
+              #greeting {
+                font-size: 1.6em;
+             }
+            .container {
+                padding: 15px 20px;
+            }
+            .header h1 {
+                font-size: 1.6em;
+            }
+             .today-times {
+                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Adjust for smaller screens */
+                gap: 10px;
+            }
+             .time-box {
+                padding: 6px 4px;
+                font-size: 0.85em;
+                
+            }
+             th, td {
+                padding: 8px 5px; /* Reduce padding slightly */
+                font-size: 0.85em; /* Smaller font in table */
+            }
+             .table-container h2 {
+                font-size: 1.3em;
+             }
+        }
+
+        @media (max-width: 480px) {
+             #time {
+                font-size: 2.1em;
+             }
+              #greeting {
+                font-size: 1.4em;
+             }
+            .header h1 {
+                font-size: 1.4em;
+            }
+            .header h1 img {
+                width: 25px;
+                height: 25px;
+                margin-right: 8px;
+            }
+             .countdown {
+                font-size: 1em;
+                padding: 12px 15px;
+            }
+            .today-times {
+                /* Go to 2 columns potentially */
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+                 gap: 8px;
+            }
+             .time-box .label {
+                 font-size: 0.9em;
+             }
+             .time-box .time {
+                 font-size: 1.1em;
+             }
+            th, td {
+                font-size: 0.8em; /* Even smaller font for very small screens */
+            }
+            .date-info {
+                font-size: 0.95em;
+            }
+        }
+.namaz{
+  width: 60px;
+}
+  .courier { font-family: "Courier New", monospace;
+  font-size: 45px;
+    
+  }
