@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝙽𝚊𝚖𝚊𝚣</title>
+    <link rel="icon" href="file/namaz.png" title="" type="" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="file/style.css" type="text/css" media="all" />
+</head>
+<body>
+  <div class="container">
+   <div style="display:flex;">
+   <img class="namaz" src="file/namaz.png" alt="" />
+  <div class="font-demo courier"><strong>Namaz</strong></div>
+   </div> <hr /><br />
+    <!-- Time, Greeting, Image -->
+    <div id="time"></div>
+    <div id="greeting"></div>
+    <img id="image" src="" alt="সময় অনুযায়ী ছবি"> <!-- Initial empty src is fine, JS will set it -->
+
+    <!-- Header with Title and Location -->
+    <div class="header">
+        <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAitJREFUaEPtmW1OwzAQhL+vgQ6QnmBPyA1wAt0BuAFOA3GCuEFugpATxE1wm5AjUBkXSCtC7CTJzoyx7fX/mSxrtvx+ZudjD4QF/uED+AIgdlLK4QoA5wGgKo0+hwwAdkqpP4/l0ABgGgCr1/k/SgvgFoA7ADwAuAIgMhYAk4FEfQPIz39+p5ALgGMAfAfgLwBTAER4AGBmM+NhAE545QAg3n8A8B9AZi5+AsBWJ38WQHkAPwAU5wXASQA6k1s7pu4DwEwAI2I+AJwB4APAnQD0wFIM8bsAUgDSXwJId777HwCvAFgKIBMAzgAgzgcgGgBJAPABQC6AKQCCAGQC0A1ApAAkAdAZwAUA3gMgHwA+AxAxgAoA/wYQBkDGALgDQDIA/zXAYgCMARAHoIUAzAAoA/AHwA4ApwA8D8APAAoAzAAwBcA1AM8CsAMQBsAOAF0AzAIwA8ATgHsAhgGQBWAQgGkAngTQB4ADAD4BGDsAnASgDUAzAJQC8ATAnQDMAHAEwDMARgHoBGANgH8A7AFwOQAzAMgCEA+AZwDcASAWgGkAfgFwHIB8ALwGYA6AWAAeBXADwHoAlAagBcATAGcBGAEgH4AHAdwDYAuATgAeA/AogL4A3AXgBGDyQBQARADeATAbgEsA/AfgKQB+ABx/5f8yALcB+B6AGADJAPgYgHkApgB4DIDsAVgXgMkAEqYI4Xw/AHgWAD+BQH7+9z/9q/4BdK29q51pS/UAAAAASUVORK5CYII=" alt="Mosque Icon">নামাজের সময়সূচি</h1>
+        <div class="location-select">
+            <select id="location" onchange="loadPrayerTimes()">
+                <option value="Dhaka">ঢাকা</option>
+                <option value="Chattogram">চট্টগ্রাম</option>
+                <option value="Khulna">খুলনা</option>
+                <option value="Rajshahi">রাজশাহী</option>
+                <option value="Sylhet">সিলেট</option>
+                <option value="Barishal">বরিশাল</option>
+                <option value="Rangpur">রংপুর</option>
+                <option value="Mymensingh">ময়মনসিংহ</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div id="countdown" class="countdown">পরবর্তী ওয়াক্তের  সময় লোড হচ্ছে...</div>
+
+    <!-- Today's times grid -->
+    <div id="today-times" class="today-times">
+        <div class="loader">আজকের ওয়াক্তের সময় লোড হচ্ছে...</div>
+    </div>
+
+    <!-- Date Info -->
+    <div id="date-info" class="date-info">
+        <span>তারিখ লোড হচ্ছে...</span>
+        
+    </div>
+   <p class="date-info" id="hijri-date">হিজরী তারিখ লোড হচ্ছে...</p>
+    <p class="date-info" id="bangla-date">বাংলা তারিখ লোড হচ্ছে...</p>
+    <!-- Monthly Table -->
+    <div class="table-container">
+        <h2 id="table-title">মাসিক সময়সূচি লোড হচ্ছে...</h2>
+        <table id="prayer-table">
+            <thead>
+                <tr>
+                    <th>তারিখ</th>
+                    <th>ফজর</th>
+                    <th>সূর্যোদয়</th>
+                    <th>যোহর</th>
+                    <th>আসর</th>
+                    <th>সূর্যাস্ত</th>
+                    <th>মাগরিব</th>
+                    <th>ইশা</th>
+                    <th>সেহরি</th> <!-- Sahri in table -->
+                    <th>ইফতার</th> <!-- Iftar in table -->
+                </tr>
+            </thead>
+            <tbody id="prayer-table-body">
+                <!-- Initial loader state -->
+                <tr>
+                    <td colspan="10" class="loader">মাসিক সময়সূচি লোড হচ্ছে...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<script src="file/app.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
